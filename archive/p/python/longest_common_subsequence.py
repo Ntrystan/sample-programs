@@ -14,7 +14,7 @@ def lcs(s1, s2):
         return []
     elif s1[-1] == s2[-1]:
         return lcs(s1[:-1], s2[:-1]) + [s1[-1]]
-    elif s1[-1] != s2[-1]:
+    else:
         return longest(lcs(s1, s2[:-1]), lcs(s1[:-1], s2))
 
 

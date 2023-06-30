@@ -5,9 +5,8 @@ def merge_sort(xs):
     def sort(xs):
         if len(xs) <= 0:
             return []
-        if len(xs) == 1:
-            return xs
-        return sort([merge(xs[0], xs[1])] + sort(xs[2:]))
+        return xs if len(xs) == 1 else sort([merge(xs[0], xs[1])] + sort(xs[2:]))
+
     split_xs = [[x] for x in xs]
     return sort(split_xs)[0]
 

@@ -6,10 +6,7 @@ def sysarg_to_list(string: str):
 
 
 def linear_search(array: list, key: int) -> bool:
-    for item in array:
-        if item == key:
-            return True
-    return False
+    return key in array
 
 
 if len(sys.argv) != 3 or not sys.argv[1]:

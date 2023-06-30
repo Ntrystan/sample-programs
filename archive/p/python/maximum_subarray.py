@@ -3,12 +3,11 @@ from typing import List
 
 
 def error_handling(argv: List) -> List[int]:
-    str_input = (','.join(i for i in argv[1:])).strip()
-    if str_input == "":
+    str_input = ','.join(argv[1:]).strip()
+    if not str_input:
         print('Usage: Please provide a list of integers in the format: "1, 2, 3, 4, 5"')
         sys.exit(1)
-    nums = [int(num) for num in str_input.split(',')]
-    return nums
+    return [int(num) for num in str_input.split(',')]
 
 
 def maximum_subarray(nums: List[int]) -> int:

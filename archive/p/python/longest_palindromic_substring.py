@@ -35,7 +35,7 @@ if __name__ == '__main__':
         print(errorMessage)
     else:
         string = sys.argv[1]
-        if string == "" or string == None:
+        if string == "" or string is None:
             print(errorMessage)
         sub = longestPalindrome(string)
         if len(sub) == 1:
