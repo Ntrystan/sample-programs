@@ -35,16 +35,15 @@ def create_tree(tree, vertex_values):
                 continue
             if is_connected:
                 node.connected.append(nodes[vertex_values[j]])
-    head = nodes[vertex_values[0]]
-    return head
+    return nodes[vertex_values[0]]
 
 def depth_first_search(node, target):
     if node.val == target:
         return True
-    for connected_node in node.connected:
-        if depth_first_search(connected_node, target):
-            return True
-    return False
+    return any(
+        depth_first_search(connected_node, target)
+        for connected_node in node.connected
+    )
 
 def main():
     tree, vertex_values, target = get_input(sys.argv[1:])

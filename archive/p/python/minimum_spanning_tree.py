@@ -5,12 +5,13 @@ USAGE = 'Usage: please provide a comma-separated list of integers'
 
 def prims_algorithm(weights):
     num_verticies = len(weights)
-    map_c, map_e = {ind: max([elem for row in weights for elem in row]) +
-                    1 for ind in range(num_verticies)}, {ind: None for ind in range(num_verticies)}
+    map_c, map_e = {
+        ind: (max(elem for row in weights for elem in row) + 1)
+        for ind in range(num_verticies)
+    }, {ind: None for ind in range(num_verticies)}
     set_f, set_q = set(), set(range(num_verticies))
-    while len(set_q) > 0:
-        v = [i for i in set_q if map_c[i] == min(
-            [map_c[item] for item in set_q])][0]
+    while set_q:
+        v = [i for i in set_q if map_c[i] == min(map_c[item] for item in set_q)][0]
         set_q.remove(v)
         set_f.add(v)
         set_f.add(map_e[v]) if map_e[v] is not None else None
@@ -20,7 +21,11 @@ def prims_algorithm(weights):
             if w in set_q and 0 < weights[w][v] <= map_c[w]:
                 map_c[w] = weights[w][v]
                 map_e[w] = v
-    return sum([weights[v][w] for v, w in map_e.items() if v is not None and w is not None])
+    return sum(
+        weights[v][w]
+        for v, w in map_e.items()
+        if v is not None and w is not None
+    )
 
 
 def _validate_arguments():
@@ -49,7 +54,7 @@ def _validate_arguments():
 
 
 def log(msg):
-    sys.stdout.write('{}\n'.format(msg))
+    sys.stdout.write(f'{msg}\n')
 
 
 def main():

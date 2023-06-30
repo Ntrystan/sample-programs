@@ -22,15 +22,12 @@ def validate_inputs(weights, num_vertices, src, dest):
         return False
 
     # Verify source and destination are in range
-    if src < 0 or src >= num_vertices or dest < 0 or dest >= num_vertices:
-        return False
-
-    return True
+    return src >= 0 and src < num_vertices and dest >= 0 and dest < num_vertices
 
 class Graph:
     def __init__(self, num_vertices):
         self.num_vertices = num_vertices
-        self.edges = [{} for i in range(num_vertices)]
+        self.edges = [{} for _ in range(num_vertices)]
 
     def add_node(self, u, v, weight):
         self.edges[u][v] = weight

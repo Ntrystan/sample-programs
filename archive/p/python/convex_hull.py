@@ -37,24 +37,19 @@ def next_hurdle(setofpoints, pivot, final_list):
     for i in z:
         if i in final_list:
             continue
-        bool1 = 1
-        for j in z:
-            if orient(pivot, i, j) == 1:
-                bool1 = 0
-                break
+        bool1 = next((0 for j in z if orient(pivot, i, j) == 1), 1)
         if bool1 == 1:
             k.append(i)
     return farthest(pivot, k)
 
 
 def foo(z):
-    final_list = []
     topmost = [(i, j) for i, j in z if j == max(Y)]
     v1 = sorted(topmost)[0]
-    final_list.append(v1)
+    final_list = [v1]
     next_point = v1[0], v1[1] + 1
     pivot = v1
-    while next_point != v1:
+    while next_point != pivot:
         next_point = next_hurdle(z, pivot, final_list)
         pivot = next_point
         final_list.append(next_point)

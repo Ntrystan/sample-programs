@@ -1,10 +1,7 @@
 import sys  # for receiving inputs from command line
 
 def josephus(n, k): # main routine
-  if (n == 1):
-    return 1
-  else:
-    return (josephus(n - 1, k) + k-1) % n + 1
+  return 1 if (n == 1) else (josephus(n - 1, k) + k-1) % n + 1
 
 n, k = 0, 0  # initialising the values 
 

@@ -4,7 +4,7 @@ if len(sys.argv) != 2 or not sys.argv[1]:
     print("Usage: please provide a string")
     sys.exit()
 
-counter = dict()
+counter = {}
 dupes = False
 for char in sys.argv[1]:
     counter.setdefault(char, 0)

@@ -1,9 +1,9 @@
 import sys
 
-if len(sys.argv) != 4 or any(not x for x in sys.argv[1:]):
+if len(sys.argv) != 4 or not all(sys.argv[1:]):
     print("Usage: please enter the dimension of the matrix and the serialized matrix")
     sys.exit(1)
-    
+
 columns = int(sys.argv[1])
 rows = int(sys.argv[2])
 serial_matrix = [int(x) for x in sys.argv[3].split(',')]

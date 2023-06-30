@@ -21,7 +21,7 @@ def input_list(list_str):
 
 
 def max_profit(jobs):
-    return sum([j.profit for _, j in iterate_job_sequence(jobs).items()])
+    return sum(j.profit for _, j in iterate_job_sequence(jobs).items())
 
 
 def iterate_job_sequence(available, complete=None):
@@ -31,7 +31,7 @@ def iterate_job_sequence(available, complete=None):
     max_job = max(available)
     available.remove(max_job)
     index_opts = [i for i in range(0, max_job.deadline) if i not in complete]
-    new_index = max(index_opts) if index_opts else -1
+    new_index = max(index_opts, default=-1)
     if new_index >= 0:
         complete[new_index] = max_job
     return iterate_job_sequence(available, complete)
